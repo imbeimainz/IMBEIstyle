@@ -1,0 +1,9 @@
+pandoc: 3.6.3
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  Introduction_to_IMBEIstyle: Introduction_to_IMBEIstyle.html
+last_built: 2025-10-17T15:10Z
+urls:
+  reference: https://imbeimainz.github.io/IMBEIstyle/reference
+  article: https://imbeimainz.github.io/IMBEIstyle/articles
