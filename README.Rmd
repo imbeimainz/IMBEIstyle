@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# IMBEIstyle
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of IMBEIstyle is to provide a simple way to create an analysis report, styled
+up with some fancy options and some UM corporate design colors, and a revealjs quarto
+presentation, in a similar fashion.
+
+More content could cover the need of e.g. a poster template - especially if doable 
+within the quarto framework.
+
+## Installation
+
+You can install the development version of IMBEIstyle like so:
+
+``` r
+library("remotes")
+remotes::install_github("imbeimainz/IMBEIstyle")
+```
+
+## Example
+
+Here is how you can create the reports and presentations with this package
+
+```{r example}
+library("IMBEIstyle")
+
+IMBEIstyle::create_bioinfo_html(file_name = "myfirstreport",
+                                report_folder = tempdir())
+
+IMBEIstyle::create_bioinfo_revealjs("myveryfirstpresentation",
+                                    presentation_folder = tempdir())
+```
