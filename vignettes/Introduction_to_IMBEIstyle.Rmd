@@ -77,7 +77,7 @@ IMBEIstyle::create_bioinfo_revealjs(file_name = "myfirstpresentation",
 
 <!-- <iframe src="./bioinfo-revealjs-presentation-template.html" width=800 height=300></iframe> -->
 
-![](webshot_presentation.png){width=70%}
+![Snapshot of the created presentation](webshot_presentation.png){width=70%}
 
 # How to further customize the looks of these documents
 
