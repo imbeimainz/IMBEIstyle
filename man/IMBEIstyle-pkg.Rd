@@ -13,6 +13,7 @@ This is a collection of functions (and templates, and style sheets) to write rep
 Useful links:
 \itemize{
   \item \url{https://github.com/imbeimainz/IMBEIstyle}
+  \item \url{https://imbeimainz.github.io/IMBEIstyle}
   \item Report bugs at \url{https://github.com/imbeimainz/IMBEIstyle/issues}
 }
 
