@@ -26,6 +26,8 @@ format:
     # code-link: true ## does seem to interfere with the title... pity.
     ## could embed also the source of the whole document!
     # code-tools: true
+    ## scrolls with smooth transition to the sections of the document
+    smooth-scroll: true
     ## controls the aesthetics of the whole thing
     theme: 
     - cosmo
