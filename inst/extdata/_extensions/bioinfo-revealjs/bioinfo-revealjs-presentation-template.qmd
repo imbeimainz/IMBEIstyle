@@ -8,6 +8,7 @@ author:
   affiliation: 
   - Institute of Medical Biostatistics, Epidemiology and Informatics (IMBEI), Mainz, Germany
   email: yourmail@uni-mainz.de
+  orcid: 0000-0003-3252-7758 # edit as needed
 ## add here more authors if needed - and do add the affiliation(s)
 date: "`r format(Sys.Date(), '%d %B %Y')`"
 format: 
