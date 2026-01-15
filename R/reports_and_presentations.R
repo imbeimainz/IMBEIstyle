@@ -149,7 +149,7 @@ create_bioinfo_revealjs <- function(file_name = NULL,
 
     if (is.null(presentation_folder)) {
       cli::cli_alert_info("Defaulting to create the presentation and its associated files in the current directory")
-      report_folder <- "."
+      presentation_folder <- "."
     } else {
       if(!dir.exists(presentation_folder)) {
         dir.create(presentation_folder)
