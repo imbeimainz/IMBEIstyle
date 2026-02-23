@@ -1,0 +1,5 @@
+name: IMBEI_beamer_short
+description: >
+ A beamer template using the style colours of Universitaetsmedizin Mainz, intended for almost any kind of presentation. 
+ Knit and build the template once to get a short tutorial.   
+create_dir: false

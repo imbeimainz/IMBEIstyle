@@ -1,0 +1,167 @@
+\documentclass[compress,ignorenonframetext,
+							 $for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+							 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LOAD PACKAGES 
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{lmodern} %% latin modern family of fonts
+							 
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+    \newcommand{\euro}{€}
+  \else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    $if(euro)$  \usepackage{eurosym}  $endif$
+  \fi
+\fi
+
+$if(natbib)$
+	\usepackage{natbib}
+	\bibliographystyle{plainnat}
+$endif$
+$if(biblatex)$
+	\usepackage{biblatex}
+	$if(biblio-files)$  \bibliography{$biblio-files$}  $endif$
+$endif$
+
+$if(graphics)$
+	\usepackage{graphicx}
+	\makeatletter
+		\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+		\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+	\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+	\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+$if(numbersections)$ $else$	\setcounter{secnumdepth}{0}	$endif$
+$if(verbatim-in-note)$	\VerbatimFootnotes  						$endif$ % allows verbatim text in footnotes
+$if(lang)$ 							\usepackage[$lang$]{babel} 			$endif$
+$for(header-includes)$	$header-includes$								$endfor$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE 
+$if(title)$ 		\title{$title$} 			$endif$
+$if(subtitle)$ 	\subtitle{$subtitle$} $endif$
+$if(author)$ 		\author{$for(author)$ $author$ $sep$ \and  $endfor$}  $endif$
+$if(institute)$ \institute{$for(institute)$ $institute$ \\ $endfor$}  $endif$
+\date{$date$}
+\IfFileExists{Universitaetsmedizin.jpg}{\titlegraphic{%
+		\includegraphics[width=0.8\textwidth]{Universitaetsmedizin.jpg}} } {}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEAMER PRESENTATION LAYOUT 
+
+\providecommand{\tightlist}{%						%% fixes minor bug in rmarkdown  lists (PM, 2019-08-21)... 
+	\setlength{\itemsep}{$tightlistSeparation$ pt}\setlength{\parskip}{0pt}}
+
+\definecolor{UniBlue}{RGB}{128,161,201} 								%% colors as defined in design manual
+\definecolor{UniDarkBlue}{RGB}{0,60,118} 									
+\definecolor{UniRed}{RGB}{193,0,43}
+
+\newcommand{\y}{0.035\paperwidth}												%% right indentation width
+
+\setbeamercolor{titlelike}		{bg=UniDarkBlue, fg=white}
+\setbeamercolor{author}				{bg=white, fg=UniDarkBlue}
+
+\setbeamercolor{section in toc}				{bg=white, fg=UniDarkBlue}
+\setbeamercolor{subsection in toc}		{bg=white, fg=UniBlue}
+\setbeamercolor{section in head/foot}	{fg=UniDarkBlue}
+
+\setbeamercolor{block title}					{fg=white, bg=UniDarkBlue}
+\setbeamercolor{block body}						{bg=UniDarkBlue!08!white}
+\setbeamercolor{block title alerted}  {fg=white, bg=UniRed!80!black}
+\setbeamercolor{block body alerted}		{bg=UniRed!08!white}
+\setbeamercolor{block title example}	{fg=white, bg=UniBlue}
+\setbeamercolor{block body example}		{bg=UniBlue!08!white}
+
+\setbeamercolor{alerted text}					{fg=UniRed}
+\setbeamercolor{footline page nr}			{bg=UniRed, fg=white} % self-defined, used below
+
+\setbeamertemplate{navigation symbols}{}								%% removes navigation symbols (bottom right)
+\setbeamercovered{invisible} 														%% mainly for lists. default is transparent
+
+\setbeamercolor{item}									{fg=UniRed}
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+
+\setbeamertemplate{frametitle}{												  %% custom frametitles 
+	\hskip-\y
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex]{frametitle}
+		\hskip\y \hskip10pt \insertframetitle
+	\end{beamercolorbox}
+}
+\setbeamertemplate{headline}{														%%  contents of headline
+	\vskip2pt \raisebox{4pt}{\hskip10pt \insertshortauthor:  \insertshorttitle}
+	\hfill
+	\IfFileExists{Universitaetsmedizin.jpg}{%
+		\includegraphics[width=0.2\paperwidth]{Universitaetsmedizin.jpg} } {}
+	\hskip\y\hbox{}
+}
+\setbeamertemplate{footline}{														%%  contents of footline
+	\hskip10pt \insertnavigation{0.75\paperwidth} 				% \hskip needed for omnious reasons
+	\hfill
+	\begin{beamercolorbox}[wd=0.025\paperwidth,ht=2.5ex,dp=1ex]{footline page nr}
+		\hfill \insertframenumber \hskip2pt\hbox{}
+	\end{beamercolorbox} \hskip0.01\paperwidth\hbox{}\vskip0.01\paperheight
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%
+
+\begin{document}
+$if(title)$
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+$endif$
+
+$for(include-before)$
+	$include-before$
+$endfor$
+
+$if(toc)$
+	\begin{frame}
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+$endif$
+
+$body$
+
+$if(natbib)$
+	$if(biblio-files)$
+		$if(biblio-title)$
+			$if(book-class)$
+				\renewcommand\bibname{$biblio-title$}
+			$else$
+				\renewcommand\refname{$biblio-title$}
+			$endif$
+		$endif$
+			\begin{frame}[allowframebreaks]{$biblio-title$}
+				\bibliography{$biblio-files$}
+			\end{frame}
+	$endif$
+$endif$
+
+$if(biblatex)$
+	\begin{frame}[allowframebreaks]{$biblio-title$}
+		\printbibliography[heading=none]
+	\end{frame}
+$endif$
+
+$for(include-after)$
+	$include-after$
+$endfor$
+
+\end{document}
