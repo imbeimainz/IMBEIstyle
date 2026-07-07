@@ -18,8 +18,8 @@ output:
     slide_level: 3
 tightlistSeparation: 0          ## Separation between items in markdown lists (in pt)
 header-includes:
-  - \usepackage{lipsum}      %% or whatever packages you might like ... 
   - \AtBeginSection {\frame{ \tableofcontents[currentsection] }}  %% Section-ToCs
+  - \providecommand{\pandocbounded}[1]{\makebox[\linewidth][l]{#1}} %% dirty hotfix for pandoc issue
 ---
  
 ###
