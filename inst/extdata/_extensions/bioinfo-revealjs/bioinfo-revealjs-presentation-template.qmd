@@ -15,7 +15,7 @@ format:
   revealjs:
     theme: 
     - default
-    - ummz_reveal_theme.scss
+    - _extensions/bioinfo-revealjs/ummz_reveal_theme.scss
     embed-resources: true
     mainfont: "Atkinson Hyperlegible"
     # mainfont: "IBM Plex Sans"
